@@ -15,16 +15,21 @@ namespace MarkdownViewEngineSample
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole();
+            //loggerFactory.AddConsole();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRouting();
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                //endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
+            });
         }
     }
 }

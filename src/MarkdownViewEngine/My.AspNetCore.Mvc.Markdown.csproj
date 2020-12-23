@@ -1,20 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.4</Version>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>1.0.6</Version>
+    <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.1" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1" />
     <PackageReference Include="CommonMark.NET" Version="0.15.1" />
-    <PackageReference Include="Nustache" Version="1.16.0.10" />
+    <PackageReference Include="Nustache" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

@@ -41,22 +41,22 @@ namespace My.AspNetCore.Mvc.Markdown
             }
             if (content.StartsWith(MarkdownDirectives.Page, StringComparison.OrdinalIgnoreCase))
             {
-                var newLineIndex = content.IndexOf("\n", MarkdownDirectives.Page.Length);
+                var newLineIndex = content.IndexOf(Environment.NewLine, MarkdownDirectives.Page.Length);
                 var pageProperties = content.Substring(MarkdownDirectives.Page.Length, newLineIndex - MarkdownDirectives.Page.Length).Trim();
                 var pageDirective = new MarkdownPageDirective();
                 pageDirective.Process(pageProperties);
                 Title = pageDirective.Title;
                 Layout = pageDirective.Layout;
-                markdown = content.Substring(content.IndexOf("\n"));
+                markdown = content.Substring(content.IndexOf(Environment.NewLine));
 
                 var modelIndex = content.IndexOf(MarkdownDirectives.Model, StringComparison.OrdinalIgnoreCase);
                 if (modelIndex > -1)
                 {
-                    var modelProperties = content.Substring(modelIndex, content.IndexOf("\n", modelIndex) - modelIndex).Trim();
+                    var modelProperties = content.Substring(modelIndex, content.IndexOf(Environment.NewLine, modelIndex) - modelIndex).Trim();
                     var modelDirective = new MarkdownModelDirective();
                     modelDirective.Process(modelProperties);
                     Model = modelDirective.Model;
-                    markdown = content.Substring(content.IndexOf("\n", modelIndex));
+                    markdown = content.Substring(content.IndexOf(Environment.NewLine, modelIndex));
                 }
             }
             else if (content.StartsWith(MarkdownDirectives.Layout, StringComparison.OrdinalIgnoreCase))
@@ -68,12 +68,12 @@ namespace My.AspNetCore.Mvc.Markdown
             }
             else if (content.StartsWith(MarkdownDirectives.Model, StringComparison.OrdinalIgnoreCase))
             {
-                var newLineIndex = content.IndexOf("\n", MarkdownDirectives.Model.Length);
+                var newLineIndex = content.IndexOf(Environment.NewLine, MarkdownDirectives.Model.Length);
                 var modelProperties = content.Substring(MarkdownDirectives.Model.Length, newLineIndex - MarkdownDirectives.Model.Length).Trim();
                 var modelDirective = new MarkdownModelDirective();
                 modelDirective.Process(modelProperties);
                 Model = modelDirective.Model;
-                markdown = content.Substring(content.IndexOf("\n"));
+                markdown = content.Substring(content.IndexOf(Environment.NewLine));
             }
             else
             {
